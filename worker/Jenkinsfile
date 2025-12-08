@@ -45,7 +45,7 @@ pipeline {
       }
       stage("package"){
         when{
-          branch pattern ".*master", comparator: "REGEXP"
+          branch "master"          
           changeset "**/worker/**"
         }
         agent{
@@ -68,7 +68,7 @@ pipeline {
           agent any
           when{
             changeset "**/worker/**"
-            branch pattern ".*master", comparator: "REGEXP"
+            branch "master"
           }
           steps{
             echo 'Packaging worker app with docker'
